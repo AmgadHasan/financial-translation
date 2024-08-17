@@ -1,0 +1,1 @@
+LANGUAGES = ("Spanish", "French", "German", "Japanese", "Arabic", "Hindi", "Portuguese")
