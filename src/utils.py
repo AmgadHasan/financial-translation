@@ -52,6 +52,8 @@ def parse_eval_args():
                     help='Specify the label column')
     parser.add_argument('--openai-model', type=str, default=None,
                     help='Specify the label column')
+    parser.add_argument('--prediction-column', type=str, default=None,
+                    help='Specify the prediction column. If not set, we will use an OpenAI model to generate predictions')
     args = parser.parse_args()
     
     return args

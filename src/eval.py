@@ -14,16 +14,19 @@ def main(args):
 
     preds = []
     logger.info(f"Running evals on {df.shape[0]} rows")
-    for text in inputs:
-        logger.debug(f"Input:\t{text}")
-        try:
-            pred = translate(text=text, language=args.language)
-            logger.debug(f"Prediction:\t{pred}")
-        except Exception as e:
-            logger.exception(e)
-            pred = ""
-        
-        preds.append(pred)
+    if args.prediction_column:
+        preds = df[args.prediction_column].tolist()
+    else:
+        for text in inputs:
+            logger.debug(f"Input:\t{text}")
+            try:
+                pred = translate(text=text, language=args.language)
+                logger.debug(f"Prediction:\t{pred}")
+            except Exception as e:
+                logger.exception(e)
+                pred = ""
+            
+            preds.append(pred)
     
     sacrebleu_score = sacrebleu.compute(predictions=preds, references=labels_list)['score']
     ter_score = ter.compute(predictions=preds, references=labels)['score']
