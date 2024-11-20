@@ -1,5 +1,5 @@
-# brookerchooser-translation
-A translation engine for the BrookerChooser website.
+# financial-translation
+A translation engine for financial applications.
 ![](static/translation-app.png)
 
 ## Setup
@@ -27,7 +27,7 @@ Go to http://0.0.0.0:8080
 Alternatively, you can run using docker
 ### Build
 ```bash
-docker build . -t brokerchooser-translation
+docker build . -t financial-translation
 ```
 
 ### Create env file
@@ -37,7 +37,7 @@ cp .example.env .env
 
 ### Run container
 ```bash
-docker run --env-file .env -p 8080:8080 brokerchooser-translation
+docker run --env-file .env -p 8080:8080 financial-translation
 ```
 
 Go to http://localhost:8080
@@ -63,11 +63,11 @@ python src/eval.py --file path/to/test_set.csv --input-column name_of_input_colu
 ### Docker
 Run the following commands with the correct arguments for  `--volumne` `--input-column` `--label-column` `--language`
 ```bash
-docker run --volume path/to/test_set.csv:/test.csv --env-file .env -p 8080:8080 brokerchooser-translation python3 src/eval.py --file /test.csv --input-column input-column-name --label-column label-column-name --language language --openai-model gpt-4o-mini
+docker run --volume path/to/test_set.csv:/test.csv --env-file .env -p 8080:8080 financial-translation python3 src/eval.py --file /test.csv --input-column input-column-name --label-column label-column-name --language language --openai-model gpt-4o-mini
 ```
 
 ```bash
-docker run --volume path/to/test_set.csv:/test.csv --env-file .env -p 8080:8080 brokerchooser-translation python3 src/eval.py --file /test.csv --input-column input-column-name --label-column label-column-name --language language --prediction-column google_translate
+docker run --volume path/to/test_set.csv:/test.csv --env-file .env -p 8080:8080 financial-translation python3 src/eval.py --file /test.csv --input-column input-column-name --label-column label-column-name --language language --prediction-column google_translate
 ```
 
 ## Tracing
